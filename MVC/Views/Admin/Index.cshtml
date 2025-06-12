@@ -1,0 +1,104 @@
+﻿@using Syncfusion.EJ2
+@model List<ShowUsersModel>
+@{
+    Layout = "_EmployeeLoggedInLayout";
+}
+
+@section styles {
+    <style>
+        .e-grid {
+            background-color: #111;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+
+            .e-grid .e-headercell {
+                background-color: #000;
+                color: #ff3c3c;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            .e-grid .e-rowcell {
+                border: 1px solid #333;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .e-grid .e-pager .e-numericcontainer .e-numerictext {
+                background-color: #ff3c3c;
+                color: #fff;
+                border: 1px solid #ff3c3c;
+            }
+
+        .titulo-tabla {
+            color: #ff3c3c;
+            text-align: center;
+            margin-top: 30px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .boton-registrar {
+            text-align: center;
+            margin: 30px 0 10px;
+        }
+
+            .boton-registrar button {
+                background-color: #ff3c3c;
+                color: #fff;
+                border: none;
+                padding: 12px 26px;
+                border-radius: 6px;
+                font-size: 16px;
+                font-weight: bold;
+                font-family: 'Oswald', sans-serif;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+                .boton-registrar button:hover {
+                    background-color: #d93737;
+                }
+    </style>
+}
+
+<div>
+    <h2 class="titulo-tabla">Gestión de Empleados</h2>
+
+    <div class="form-row justify-content-center boton-registrar">
+        <div class="form-group col text-center">
+            <button type="button" onclick="registrarEmpleado()">Registrar nuevo</button>
+        </div>
+    </div>
+
+    @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)Model).Columns(col =>
+            {
+                col.Field("Id").HeaderText("ID").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                col.Field("Email").HeaderText("Correo electrónico").Width("160").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                col.Field("Name").HeaderText("Nombre").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                col.HeaderText("Acciones").Template(
+                "<button class='e-btn e-small e-flat e-primary' onclick='editarUsuario(${Id})'>Editar</button>" +
+                "<button class='e-btn e-small e-flat e-danger' onclick='eliminarUsuario(${Id})'>Eliminar</button>"
+                ).Width("180").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).AllowFiltering(false).Add();
+            }).AllowPaging(true).AllowSorting(true).AllowFiltering(true).PageSettings(page => page.PageSize(5)).Render()
+</div>
+
+<script>
+    function editarUsuario(id) {
+        window.location.href = '/Admin/Edit/' + id;
+    }
+
+    function eliminarUsuario(id) {
+        if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+            window.location.href = '/Admin/Delete/' + id;
+        }
+    }
+
+    function registrarEmpleado() {
+        window.location.href = '/Admin/Register';
+    }
+</script>

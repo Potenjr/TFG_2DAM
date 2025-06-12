@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PotenGym</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <!--<link rel="stylesheet" href="/css/flaticon.css" type="text/css"> -->
+    <style>
+        body {
+            font-family: 'Muli', sans-serif;
+            background-color: #111;
+            color: #fff;
+            padding-top: 130px;
+        }
+
+        .header-section {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #000;
+            z-index: 9999;
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.5);
+            padding: 20px 0;
+        }
+
+        .logo img {
+            max-height: 60px;
+            border-radius: 6px;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            font-family: 'Oswald', sans-serif;
+            color: #fff;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+            .nav-menu a:hover {
+                background: #ff3c3c;
+                color: #fff;
+                box-shadow: 0 0 12px #ff3c3c;
+            }
+
+        .top-option .to-social a {
+            color: white;
+            margin-left: 15px;
+            font-size: 20px;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+            .top-option .to-social a:hover {
+                color: #ff3c3c;
+                transform: scale(1.2);
+            }
+
+        footer {
+            background-color: #000;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+            font-size: 14px;
+        }
+
+        .fs-about p {
+            color: #aaa;
+        }
+
+        .fs-widget h4 {
+            color: #ff3c3c;
+            margin-bottom: 20px;
+        }
+
+        .fs-widget ul {
+            padding: 0;
+            list-style: none;
+        }
+
+            .fs-widget ul li a {
+                color: #ccc;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .fs-widget ul li a:hover {
+                    color: #fff;
+                }
+
+        .fw-recent h6 a {
+            color: #fff;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        .fw-recent ul {
+            color: #777;
+            font-size: 12px;
+            list-style: none;
+            padding: 0;
+            margin: 5px 0 15px;
+        }
+
+        .canvas-open {
+            display: none;
+        }
+
+        
+        .nav-menu li::before,
+        .nav-menu a::before {
+            content: none !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-3 d-flex align-items-center">
+                    <div class="logo">
+                        <a href="/"><img src="~/img/logo.png" alt="Logo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="/Home/Index">Inicio</a></li>
+                            <li><a href="/Employee/Login">Empleado</a></li>
+                            <li><a href="/Home/GetStarted">Registrarse</a></li>
+                            <li><a href="/Home/Login">Iniciar sesión</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3 text-end">
+                    <div class="top-option">
+                        <div class="to-social">
+                            <a href="https://github.com/Potenjr/TFG_2DAM" target="_blank">
+                                <i class="fa fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/adri%C3%A1n-potenciano-vila-6b95b2251/">
+                                <i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <section class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="fs-about">
+                            <div class="fa-logo mb-3">
+                                <a href="/"><img src="~/img/logo.png" alt="Logo" style="max-height: 50px;"></a>
+                            </div>
+                            <p>
+                                PotenGym es un sistema de gestión con control de roles, autenticación y gestión de usuarios y empleados. Rápido, limpio y seguro.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <div class="fs-widget">
+                            <h4>Enlaces útiles</h4>
+                            <ul>
+                                <li><a href="#">Sobre nosotros</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Clases</a></li>
+                                <li><a href="#">Contacto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <div class="fs-widget">
+                            <h4>Soporte</h4>
+                            <ul>
+                                <li><a href="/Login">Iniciar sesión</a></li>
+                                <li><a href="#">Mi cuenta</a></li>
+                                <li><a href="#">Suscribirse</a></li>
+                                <li><a href="#">Contacto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="fs-widget">
+                            <h4>Consejos y Guías</h4>
+                            <div class="fw-recent">
+                                <h6><a href="#">Entrena con inteligencia: claves del éxito</a></h6>
+                                <ul>
+                                    <li>3 min de lectura</li>
+                                    <li>10 Comentarios</li>
+                                </ul>
+                            </div>
+                            <div class="fw-recent">
+                                <h6><a href="#">Pierde grasa con entrenamientos funcionales</a></h6>
+                                <ul>
+                                    <li>4 min de lectura</li>
+                                    <li>12 Comentarios</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,343 @@
+﻿@{
+    ViewData["Title"] = "Página principal";
+}
+
+<PageTitle>Iron Gym</PageTitle>
+
+<style>
+    body {
+        font-family: 'Arial Black', sans-serif;
+        background-color: #111;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hero-section-custom-container {
+        background: url('/img/hero/hero-1.jpg') center center/cover no-repeat;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-text-container-max-width {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 50px;
+        border-radius: 12px;
+        box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+    }
+
+        .hero-text-container-max-width span {
+            color: #ff3c3c;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-text-container-max-width h1 {
+            font-size: 60px;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+
+        .hero-text-container-max-width strong {
+            color: #ff3c3c;
+        }
+
+    .hero-button-inline-block {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 15px 30px;
+        background: #ff3c3c;
+        color: #fff;
+        border-radius: 30px;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .hero-button-inline-block:hover {
+            background: #e60000;
+            box-shadow: 0 0 15px #e60000;
+        }
+
+    .section-title span {
+        color: #ff3c3c;
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .section-title h2 {
+        font-size: 42px;
+        color: #fff;
+        margin-top: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .cs-item,
+    .class-item,
+    .ps-item {
+        background-color: #1c1c1c;
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 30px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 60, 60, 0.2);
+    }
+
+        .cs-item:hover,
+        .class-item:hover,
+        .ps-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 60, 60, 0.5);
+        }
+
+        .cs-item h4,
+        .ci-text h5,
+        .ci-text h4,
+        .ps-item h3 {
+            color: #fff;
+            margin-top: 15px;
+        }
+
+        .cs-item p,
+        .ci-text span,
+        .ps-item ul li {
+            color: #bbb;
+        }
+
+    .primary-btn {
+        background: #ff3c3c;
+        padding: 12px 25px;
+        border-radius: 25px;
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+    }
+
+        .primary-btn:hover {
+            background: #e60000;
+            box-shadow: 0 0 12px #ff3c3c;
+        }
+
+    .ci-pic img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+        ul li::before {
+            content: "✔ ";
+            color: #ff3c3c;
+            margin-right: 8px;
+        }
+
+    section {
+        padding: 80px 0;
+    }
+</style>
+
+<body>
+    <section class="hero-section-custom-container">
+        <div class="hero-text-container-max-width">
+            <span>Transforma tu cuerpo</span>
+            <h1>SÉ <strong>FUERTE</strong> ENTRENA DURO</h1>
+            <a href="#" class="hero-button-inline-block">Más información</a>
+        </div>
+    </section>
+
+    <!-- ¿Por qué elegirnos? -->
+    <section class="choseus-section spad">
+        <div class="container">
+            <div class="section-title text-center">
+                <span>¿Por qué elegirnos?</span>
+                <h2>LLEVA TUS LÍMITES AL MÁXIMO</h2>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="cs-item">
+                        <span class="flaticon-034-stationary-bike"></span>
+                        <h4>Equipamiento moderno</h4>
+                        <p>Entrena con la última tecnología para lograr tus objetivos.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="cs-item">
+                        <span class="flaticon-033-juice"></span>
+                        <h4>Nutrición saludable</h4>
+                        <p>Planes personalizados para optimizar tu rendimiento y salud.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="cs-item">
+                        <span class="flaticon-002-dumbell"></span>
+                        <h4>Entrenamiento profesional</h4>
+                        <p>Rutinas creadas por expertos certificados en fitness.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="cs-item">
+                        <span class="flaticon-014-heart-beat"></span>
+                        <h4>Adaptado a ti</h4>
+                        <p>Programas únicos según tus objetivos, ritmo y nivel.
+                            
+                            
+                            <p>Nos adaptamos a ti</p>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestras clases -->
+    <section class="classes-section spad">
+        <div class="container">
+            <div class="section-title text-center">
+                <span>Nuestras Clases</span>
+                <h2>LO QUE PODEMOS OFRECERTE</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="class-item">
+                        <div class="ci-pic"><img src="img/classes/class-4.jpg" alt=""></div>
+                        <div class="ci-text">
+                            <span>Fuerza</span>
+                            <h5>Levantamiento de pesas</h5>
+                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="class-item">
+                        <div class="ci-pic"><img src="img/gallery/gallery-7.jpg" alt=""></div>
+                        <div class="ci-text">
+                            <span>Cardio</span>
+                            <h5>Ciclismo indoor</h5>
+                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="class-item">
+                        <div class="ci-pic"><img src="img/classes/class-3.jpg" alt=""></div>
+                        <div class="ci-text">
+                            <span>Fuerza</span>
+                            <h5>Kettlebell power</h5>
+                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="class-item">
+                        <div class="ci-pic"><img src="img/classes/class-2.jpg" alt=""></div>
+                        <div class="ci-text">
+                            <span>Cardio</span>
+                            <h4>Yoga</h4>
+                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="class-item">
+                        <div class="ci-pic"><img src="img/classes/class-5.jpg" alt=""></div>
+                        <div class="ci-text">
+                            <span>Entrenamiento</span>
+                            <h4>Boxeo</h4>
+                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planes -->
+    <section class="pricing-section spad">
+        <div class="container">
+            <div class="section-title text-center">
+                <span>Nuestros Planes</span>
+                <h2>ELIGE TU PLAN IDEAL</h2>
+            </div>
+            <div class="row justify-content-center">
+
+                <!-- Clase suelta -->
+                <div class="col-lg-4 col-md-8">
+                    <div class="ps-item">
+                        <h3>Mes</h3>
+                        <div class="pi-price">
+                            <h2>39€</h2>
+                            <span>POR MES</span>
+                        </div>
+                        <ul>
+                            <li>Acceso 1 mes</li>
+                            <li>Zonas comunes disponibles</li>
+                            <li>Clases colectivas incluidas</li>
+                            <li>Sin permanencia</li>
+                            <li>Ideal para probar</li>
+                            <li>Sin matrícula</li>
+                        </ul>
+                        <a href="https://localhost:7148/Home/Login" class="primary-btn pricing-btn">Apuntarme</a>
+                    </div>
+                </div>
+
+                <!-- 6 meses -->
+                <div class="col-lg-4 col-md-8">
+                    <div class="ps-item">
+                        <h3>6 meses ilimitado</h3>
+                        <div class="pi-price">
+                            <h2>200€</h2>
+                            <span>SEMESTRAL</span>
+                        </div>
+                        <ul>
+                            <li>Acceso 24/7 durante 6 meses</li>
+                            <li>Equipamiento avanzado</li>
+                            <li>Clases dirigidas ilimitadas</li>
+                            <li>Consulta mensual con entrenador</li>
+                            <li>Zona de pesas y cardio</li>
+                            <li>Sin matrícula</li>
+                        </ul>
+                        <a href="https://localhost:7148/Home/Login" class="primary-btn pricing-btn">Apuntarme</a>
+                    </div>
+                </div>
+
+                <!-- 12 meses -->
+                <div class="col-lg-4 col-md-8">
+                    <div class="ps-item">
+                        <h3>12 meses ilimitado</h3>
+                        <div class="pi-price">
+                            <h2>390€</h2>
+                            <span>ANUAL</span>
+                        </div>
+                        <ul>
+                            <li>Acceso total durante 1 año</li>
+                            <li>Entrenador personal mensual</li>
+                            <li>Nutricionista gratuito</li>
+                            <li>Trae a 1 amigo gratis al mes</li>
+                            <li>Pack de bienvenida exclusivo</li>
+                            <li>Sin matrícula</li>
+                        </ul>
+                        <a href="https://localhost:7148/Home/Login" class="primary-btn pricing-btn">Apuntarme</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</body>

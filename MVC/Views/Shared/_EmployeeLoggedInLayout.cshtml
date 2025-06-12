@@ -1,0 +1,102 @@
+﻿@using Syncfusion.EJ2
+@RenderSection("styles", required: false)
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Poten Gym</title>
+
+    <!-- Estilos Bootstrap y personalizados -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LockBox.styles.css" asp-append-version="true" />
+
+    <!-- Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Syncfusion estilos y scripts -->
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/26.1.35/fluent.css" />
+    <script src="https://cdn.syncfusion.com/ej2/26.1.35/dist/ej2.min.js"></script>
+
+    <!-- Bootstrap adicional -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .sidebar {
+            background-color: #1f1f1f;
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+        }
+
+            .sidebar a.logo {
+                font-size: 2em;
+                padding-left: 10px;
+                font-weight: bold;
+                color: white;
+                text-decoration: none;
+                display: block;
+                margin-bottom: 30px;
+            }
+
+            .sidebar .nav-link {
+                background-color: #f36100;
+                color: white;
+                border-radius: 5px;
+                padding: 10px 15px;
+                margin-bottom: 10px;
+                display: block;
+                transition: background-color 0.3s ease;
+                text-decoration: none;
+            }
+
+                .sidebar .nav-link:hover {
+                    background-color: #d65000;
+                }
+
+        .content {
+            flex-grow: 1;
+            padding: 40px 20px 20px 270px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d-flex">
+        <!-- Barra lateral -->
+        <div class="sidebar">
+            <a href="/" class="logo">Poten Gym</a>
+
+            <ul class="list-unstyled">
+                <li>
+                    <a href="/Employee" class="nav-link">Clientes</a>
+                </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a href="/Admin" class="nav-link">Empleados</a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+
+    @Html.EJS().ScriptManager()
+</body>
+</html>

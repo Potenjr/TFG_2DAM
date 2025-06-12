@@ -1,0 +1,172 @@
+﻿@using Domain.Entities
+@model UserInfo
+
+@{
+    ViewData["Title"] = "Perfil del Usuario - IronGym";
+
+    DateTime fechaSuscripcion = TempData.Peek("FechaSuscripcion") != null
+        ? DateTime.Parse(TempData.Peek("FechaSuscripcion").ToString())
+        : DateTime.Now.AddDays(-2);
+
+    var diasRestantes = (fechaSuscripcion.AddDays(30) - DateTime.Now).Days;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LockBox.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/26.1.35/fluent.css" />
+    <script src="https://cdn.syncfusion.com/ej2/26.1.35/dist/ej2.min.js"></script>
+
+    <style>
+        .readonly-input {
+            background-color: #f0f0f0;
+            cursor: not-allowed;
+            opacity: 1;
+        }
+
+        .info-label {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body style="background-color: #121212; color: #f5f5f5;">
+
+    <div class="container py-5">
+        <section class="mx-auto" style="max-width: 900px;">
+            <div class="text-center mb-4">
+                <h1 style="color: #FF6600;">Perfil del Usuario</h1>
+                <p class="text-muted">Si deseas modificar tus estadísticas, contacta con un entrenador</p>
+            </div>
+
+            <!-- Estado de suscripción -->
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="p-4 rounded" style="background-color: #1e1e1e; border: 1px solid #ff3c3c;">
+                        <h4 style="color: #ff3c3c;">Estado de Suscripción</h4>
+                        <p><strong>Días restantes:</strong> @diasRestantes días</p>
+                        <a href="/MainPage/VerRutinas" class="btn btn-outline-light mt-2">Ver mis rutinas</a>
+                        <button type="button" onclick="abrirModalPlanes()" class="btn btn-danger mt-2">Ver planes y suscribirme</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Datos del usuario -->
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="info-label" for="name">Nombre completo</label>
+                        <input asp-for="Name" class="form-control readonly-input" id="name" readonly />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="info-label" for="email">Correo electrónico</label>
+                        <input asp-for="Email" type="email" class="form-control readonly-input" id="email" readonly />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="info-label" for="age">Edad</label>
+                        <input asp-for="Age" type="number" class="form-control readonly-input" id="age" readonly />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="info-label" for="height">Altura (cm)</label>
+                        <input asp-for="Height" type="number" class="form-control readonly-input" id="height" readonly />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="info-label" for="weight">Peso (kg)</label>
+                        <input asp-for="Weight" type="number" class="form-control readonly-input" id="weight" readonly />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="info-label" for="chest">Pecho (cm)</label>
+                        <input asp-for="ChestCircumference" type="number" class="form-control readonly-input" id="chest" readonly />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="info-label" for="hip">Cadera (cm)</label>
+                        <input asp-for="HipCircumference" type="number" class="form-control readonly-input" id="hip" readonly />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="info-label" for="arm">Brazos (cm)</label>
+                        <input asp-for="ArmCircumference" type="number" class="form-control readonly-input" id="arm" readonly />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="info-label" for="thigh">Muslos (cm)</label>
+                        <input asp-for="ThighCircumference" type="number" class="form-control readonly-input" id="thigh" readonly />
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label class="info-label" for="calf">Pantorrillas (cm)</label>
+                        <input asp-for="CalfCircumference" type="number" class="form-control readonly-input" id="calf" readonly />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="info-label" for="forearm">Antebrazos (cm)</label>
+                        <input asp-for="ForearmCircumference" type="number" class="form-control readonly-input" id="forearm" readonly />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <!-- Modal de pago -->
+    <div id="modalPlanes" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000000cc; z-index:9999; justify-content:center; align-items:center;">
+        <div style="background:#fff; color:#000; padding:30px; border-radius:10px; width:400px; text-align:center;">
+            <h3>Selecciona un plan</h3>
+            <select id="planSelector" onchange="actualizarPrecio()" class="form-select mb-3">
+                <option value="39">Clase suelta - $39</option>
+                <option value="59">6 meses ilimitado - $59</option>
+                <option value="99">12 meses ilimitado - $99</option>
+            </select>
+
+            <p><strong>Total a pagar:</strong> <span id="precioPlan">$39</span></p>
+
+            <form onsubmit="return simularPago(event)">
+                <input type="text" placeholder="Número de tarjeta" required pattern="\d{16}" class="form-control mb-2" />
+                <input type="text" placeholder="MM/AA" required pattern="\d{2}/\d{2}" class="form-control mb-2" />
+                <input type="text" placeholder="CVC" required pattern="\d{3}" class="form-control mb-3" />
+                <button type="submit" class="btn btn-danger">Pagar</button>
+                <button type="button" class="btn btn-secondary mt-2" onclick="cerrarModal()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function abrirModalPlanes() {
+            document.getElementById('modalPlanes').style.display = 'flex';
+            document.getElementById('planSelector').value = "39";
+            actualizarPrecio();
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalPlanes').style.display = 'none';
+        }
+
+        function actualizarPrecio() {
+            const valor = document.getElementById('planSelector').value;
+            document.getElementById('precioPlan').innerText = `$${valor}`;
+        }
+
+        function simularPago(event) {
+            event.preventDefault();
+            window.location.href = "/MainPage/ConfirmarPago";
+            return false;
+        }
+    </script>
+
+</body>
+</html>

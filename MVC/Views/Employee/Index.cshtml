@@ -1,0 +1,92 @@
+﻿@using Syncfusion.EJ2
+@model List<ShowUsersModel>
+@{
+    Layout = "_EmployeeLoggedInLayout";
+}
+
+@section styles {
+    <style>
+        .e-grid {
+            background-color: black;
+            color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+            .e-grid .e-headercell {
+                background-color: #333;
+                color: #fff;
+                font-weight: bold;
+            }
+
+            .e-grid .e-rowcell {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+            }
+
+            .e-grid .e-pager .e-numericcontainer .e-numerictext {
+                background-color: #ff3c3c;
+                ;
+                color: #fff;
+                border: 1px solid #ff3c3c;
+                ;
+            }
+
+        .titulo-clientes {
+            color: #ff3c3c;
+            ;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .e-btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .e-primary {
+            background-color: #ff3c3c;
+            ;
+            border-color: #ff3c3c;
+            ;
+            color: #fff;
+        }
+
+        .e-danger {
+            background-color: #d9534f;
+            border-color: #d9534f;
+            color: #fff;
+        }
+    </style>
+}
+
+<div>
+    <h2 class="titulo-clientes">Clientes</h2>
+
+    @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)Model).Columns(col =>
+            {
+                col.Field("Id").HeaderText("ID").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                col.Field("Email").HeaderText("Correo electrónico").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                col.Field("Name").HeaderText("Nombre completo").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                col.HeaderText("Acciones").Template(
+                "<button class='e-btn e-small e-flat e-primary' onclick='editarUsuario(${Id})'>Editar</button>" +
+                "<button class='e-btn e-small e-flat e-danger' onclick='eliminarUsuario(${Id})'>Eliminar</button>"
+                ).Width("160").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).AllowFiltering(false).Add();
+            }).AllowPaging(true).AllowSorting(true).AllowFiltering(true).PageSettings(page => page.PageSize(5)).Render()
+</div>
+
+<script>
+    function editarUsuario(id) {
+        window.location.href = '/Employee/Edit/' + id;
+    }
+
+    function eliminarUsuario(id) {
+        if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+            window.location.href = '/Employee/Delete/' + id;
+        }
+    }
+</script>

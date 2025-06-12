@@ -1,0 +1,64 @@
+﻿@model NewAccountViewModel;
+
+<section class="choseus-section spad">
+    <div class="container">
+        <div class="form-body" style="background-color: black; padding: 40px; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+            <div class="row justify-content-center">
+                <div class="form-holder" style="max-width: 600px; width: 100%;">
+                    <div class="form-content text-center">
+                        <div class="form-items" style="margin-bottom: 30px;">
+                            <h3 class="register-heading" style="font-size: 24px; color: #dc3545; margin-bottom: 10px;">Regístrate hoy</h3>
+                            <p class="register-subheading" style="color: white; font-size: 16px; margin-bottom: 20px;">Rellena los datos a continuación.</p>
+
+                            <form asp-action="GetStarted" asp-controller="Home" method="post" class="needs-validation" novalidate>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 mb-3">
+                                        <input asp-for="Name" class="form-control" type="text" name="Name" placeholder="Tu nombre" required style="padding: 12px;" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 mb-3">
+                                        <input asp-for="Email" class="form-control" type="email" name="email" placeholder="Correo electrónico" required style="padding: 12px;" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 mb-3">
+                                        <input asp-for="Password" class="form-control" type="password" name="password" placeholder="Contraseña" required style="padding: 12px;" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 mb-3">
+                                        <input asp-for="ConfirmPassword" class="form-control" type="password" name="confirmPassword" placeholder="Confirmar contraseña" required style="padding: 12px;" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <a asp-action="LoginDefaultUser" asp-controller="Home" class="nav-link" style="color: #3498db;">
+                                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Usar cuenta por defecto
+                                </a>
+
+                                @if (ViewBag.Errors != null)
+                                {
+                                    <div class="mt-3">
+                                        <span class="text-danger">@ViewBag.Errors</span>
+                                    </div>
+                                }
+
+                                <div style="margin-top: 10px;"></div>
+                                <button type="submit" style="padding: 14px 28px; font-size: 16px; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Crear cuenta</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

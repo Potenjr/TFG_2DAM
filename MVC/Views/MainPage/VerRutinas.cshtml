@@ -1,0 +1,30 @@
+﻿@model List<Domain.Entities.ExerciseDay>
+@{
+    ViewData["Title"] = "Ver Rutinas";
+}
+
+<div class="container py-5 text-light" style="background-color: #1f1f1f; border-radius: 10px;">
+    <h2 class="mb-4 text-center">Mis Rutinas</h2>
+
+    @foreach (var rutina in Model)
+    {
+        <div class="card mb-3 bg-dark text-light border-secondary shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">@rutina.Title</h5>
+                <p class="card-text">@rutina.Description</p>
+            </div>
+        </div>
+    }
+
+    <div class="mt-5">
+        <h4 class="mb-3">¿Necesitas más rutinas?</h4>
+        <form>
+            <div class="mb-3">
+                <label for="emailEntrenador" class="form-label">Enviar solicitud al entrenador</label>
+                <input type="email" class="form-control bg-dark text-white border-secondary" id="emailEntrenador" placeholder="tuemail@ejemplo.com">
+
+            </div>
+            <button type="button" class="btn btn-outline-success" >Solicitar más rutinas</button>
+        </form>
+    </div>
+</div>
