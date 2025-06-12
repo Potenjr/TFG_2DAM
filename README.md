@@ -1,6 +1,6 @@
 # Potengym 🏋️‍♀️
 **Potengym** es una aplicación web desarrollada como parte del Trabajo de Fin de Ciclo del Grado Superior en Desarrollo de Aplicaciones Multiplataforma.  
-Está orientada a la gestión de gimnasios, ofreciendo funcionalidades como autenticación de usuarios, control de pagos, gestión de rutinas y administración de clientes.
+Está orientada a la gestión de gimnasios, ofreciendo funcionalidades como autenticación de usuarios y administración de clientes.
 
 ## 🧱 Arquitectura del proyecto
 El proyecto sigue una arquitectura en capas y está dividido en dos ejecutables principales:
