@@ -16,13 +16,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-// ConfiguraciÛn de Swagger/OpenAPI para la documentaciÛn de la API
+// Configuraci√≥n de Swagger/OpenAPI para la documentaci√≥n de la API
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
-        Description = "Cabecera est·ndar de autorizaciÛn utilizando el esquema Bearer. Ejemplo: \"Bearer {token}\"",
+        Description = "Cabecera est√°ndar de autorizaci√≥n utilizando el esquema Bearer. Ejemplo: \"Bearer {token}\"",
         In = ParameterLocation.Header,
         Name = "Authorization",
         Type = SecuritySchemeType.ApiKey
@@ -46,7 +46,7 @@ builder.Services.AddScoped<ISecurityService>(serviceProvider =>
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AESService>();
 
-// Configurar autenticaciÛn y autorizaciÛn mediante JWT
+// Configurar autenticaci√≥n y autorizaci√≥n mediante JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -61,9 +61,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
+builder.WebHost.UseUrls("http://+:80");
 var app = builder.Build();
 
-// ConfiguraciÛn del pipeline HTTP
+// Configuraci√≥n del pipeline HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -77,7 +78,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Asegurar que la base de datos estÈ creada y migraciones aplicadas al iniciar la aplicaciÛn
+// Asegurar que la base de datos est√© creada y migraciones aplicadas al iniciar la aplicaci√≥n
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -93,7 +94,7 @@ using (var scope = app.Services.CreateScope())
     }
     catch (Exception ex)
     {
-        // Manejar errores durante la migraciÛn o inicializaciÛn
+        // Manejar errores durante la migraci√≥n o inicializaci√≥n
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "Ha ocurrido un error al migrar o inicializar la base de datos.");
     }
