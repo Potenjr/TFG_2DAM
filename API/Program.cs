@@ -61,7 +61,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
-builder.WebHost.UseUrls("http://+:80");
+
 var app = builder.Build();
 
 // Configuración del pipeline HTTP
